@@ -5,26 +5,23 @@
 
 # ********************************************************
 
-
 import yaml
-from base.global_path import mysql_path
 from common.record_log import logs
 
-class ReadConfig(object):
+class ReadData():
 
-    def __init__(self):
-        self.conf = self.getConfig()
+    def __init__(self, yaml_name):
+        self.conf = self.getConfig(yaml_name)
 
     # 读取配置文件yaml_path
-    def getConfig(self):
+    def getConfig(self, yaml_name):
         # 读取配置文件
-        with open(mysql_path, 'r', encoding='utf-8') as f:
+        with open(yaml_name, 'r', encoding='utf-8') as f:
             conf_obj = f.read()
 
         # 转化成字典格式
         conf_dict = yaml.load(conf_obj, Loader=yaml.FullLoader)
         return conf_dict
-
 
     # 获取配置文件的值
     def getValue(self, sec_name):
@@ -33,6 +30,10 @@ class ReadConfig(object):
         except Exception as e:
             logs.error(e)
 
+
 if __name__ == '__main__':
-    r = ReadConfig()
-    r_dict = r.getValue("mysql_localhost")
+    from base.global_path import hospital_path
+
+    r = ReadData(hospital_path)
+    r_dict = r.getValue("hospital_name")
+    print(r_dict)
