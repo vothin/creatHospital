@@ -14,10 +14,16 @@ from common.read_yaml import ReadYaml
 class Base():
 
     # 初始化读取配置文件url.ini
-    def __init__(self, sec_name):
+    def __init__(self):
         self.mysql = ReadYaml(mysql_path)
+
+
+
+    def get_mysqlValues(self, sec_name):
+        # 读取mysql配置文件
         self.mysql_conf = self.mysql.getValue(sec_name)
 
+        # 获取mysql的数据
         self.connect = pymysql.Connect(
             host = self.mysql_conf['url'],
             port = self.mysql_conf['port'],
