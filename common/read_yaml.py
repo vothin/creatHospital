@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # @Time : 2020/6/4 15:52
 # @Author : Vothin
-# @File : read_config.py
+# @File : read_yaml.py
 
 # ********************************************************
 
 import yaml
 from common.record_log import logs
 
-class ReadData():
+class ReadYaml():
 
     def __init__(self, yaml_name):
         self.conf = self.getConfig(yaml_name)
@@ -34,6 +34,6 @@ class ReadData():
 if __name__ == '__main__':
     from base.global_path import hospital_path
 
-    r = ReadData(hospital_path)
+    r = ReadYaml(hospital_path)
     r_dict = r.getValue("hospital_name")
     print(r_dict)
