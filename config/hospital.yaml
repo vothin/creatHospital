@@ -1,4 +1,4 @@
 hospital_name: XXX
 hospital_office:
-  XXX,
-  XXX,
+  - XXX,
+  - XXX,
