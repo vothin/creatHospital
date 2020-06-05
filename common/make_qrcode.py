@@ -28,3 +28,5 @@ class MakeQRCode():
         logs.info('制作科室二维码')
 
 
+if __name__ == '__main__':
+    m = MakeQRCode('123')
