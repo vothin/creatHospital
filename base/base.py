@@ -8,20 +8,18 @@
 import pymysql
 from base.global_path import mysql_path
 from common.read_yaml import ReadYaml
+from common.record_log import logs
 
 
 
 class Base():
 
     # 初始化读取配置文件url.ini
-    def __init__(self):
-        self.mysql = ReadYaml(mysql_path)
+    def __init__(self, sec_name):
+        mysql = ReadYaml(mysql_path)
 
-
-
-    def get_mysqlValues(self, sec_name):
         # 读取mysql配置文件
-        self.mysql_conf = self.mysql.getValue(sec_name)
+        self.mysql_conf = mysql.getValue(sec_name)
 
         # 获取mysql的数据
         self.connect = pymysql.Connect(
@@ -32,3 +30,9 @@ class Base():
             db = self.mysql_conf['db'],
             charset = 'utf8'
         )
+
+        self.cursor = self.connect.cursor()
+        logs.info('成功连接数据库')
+
+
+
