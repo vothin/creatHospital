@@ -25,7 +25,6 @@ class MakeQRCode():
 
         img = qr.make_image()
         img.save(image_path)
-        logs.info('制作科室二维码')
 
 
 if __name__ == '__main__':
