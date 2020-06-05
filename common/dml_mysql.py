@@ -21,10 +21,11 @@ class DML_Mysql(Base):
 
         office_dict = {}
         for i in self.cursor.fetchall():
-            office_dict[i[0]] = i[1]
+            office_dict[i[0]] = url % i[1]
 
         # 关闭游标
         self.connect.commit()
+        logs.info('查询完成')
 
         return office_dict
 
