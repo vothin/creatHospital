@@ -14,7 +14,7 @@ class Main(DML_Mysql):
     def main(self, parent_ip):
 
         # 查询数据
-        logs.info('查询shop_id为%s下的科室' % parent_ip)
+        logs.info('查询shop_id为%s的科室' % parent_ip)
         data = self.selectData(parent_ip)
 
         # 写入到Excel表格
